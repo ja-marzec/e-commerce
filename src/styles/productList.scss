@@ -1,0 +1,10 @@
+.products__list{
+    margin-top: 1em;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 80%;
+    justify-content: space-around;
+    align-items: flex-start;
+    // background-color: aqua;
+}

@@ -1,0 +1,57 @@
+$margin : 30px;
+
+.header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 10vh;
+    width: 100vw;
+    // position: fixed;
+    // background-color: red;
+    border-bottom: 2px solid black;
+
+    .nav__holder{
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        width: 60%;
+        font-weight: 800;
+        cursor: pointer;
+        margin-right: -1 * $margin;
+
+    }
+
+    .cart{
+        justify-self: flex-end;
+        display: flex;
+        margin-right: $margin;
+
+        .cart__wrapper{
+            position: relative;
+        }
+
+        .cart__circle{
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            top: -50%;
+            right: -50%;
+            background-color: gray;
+            border-radius: 100%;
+
+            .cart__counter{
+                position: absolute;
+                left: 53%;
+                top: 10%;
+                transform: translate(-50%);
+            }
+        }
+    }
+}
+
+
+.page__body{
+    display: flex;
+    justify-content: center;
+}
+

@@ -1,0 +1,14 @@
+.cart__container{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.cart-item{
+    width: 25vw;
+    margin: 1em;
+    &__image{
+        width: 100%;
+    }
+}

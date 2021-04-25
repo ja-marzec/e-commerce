@@ -1,0 +1,32 @@
+.product__card{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 15vw;
+
+    @include for-phone-only {
+        max-width: 90vw;
+    }
+}
+.product__image{
+    
+}
+.product__info{
+
+}
+.product__name{
+
+    font-weight: 800;
+    margin: 10px 0 7px;
+}
+.product__description{
+    word-wrap: break-word;
+
+}
+.product__details{
+
+}
+.product__price{
+    
+}
+

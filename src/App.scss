@@ -1,3 +1,10 @@
+@import './styles/reset-css';
+@import './styles/mixins';
+@import './styles/productList';
+@import "./styles/productItem";
+@import "./styles/header";
+@import './styles/cartItem.scss';
+
 .App {
   text-align: center;
 }
