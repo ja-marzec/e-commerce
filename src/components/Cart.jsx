@@ -1,11 +1,12 @@
 import { useSelector, useDispatch } from 'react-redux';
 import CartItem from './CartItem';
+import { commerce } from '../lib/commerce';
 
 export default function Cart () {
     const shop = useSelector(state => state.shop.cartItems)
 
 
-    console.log(shop);
+    console.log("CART ",shop);
 
     
 
@@ -32,6 +33,10 @@ export default function Cart () {
         })
     }
 
+    function cleanCart() {
+        commerce.cart.empty().then((response) => console.log(response))
+    }
+
 
     return (
         <div>
@@ -39,6 +44,7 @@ export default function Cart () {
                ?  <div className="cart__container">
                     {renderCartItems()} 
                     </div>: renderEmptyCart()} 
+                    <button onClick={() => cleanCart()}>CLEAN CART </button>
         </div>
 
     )

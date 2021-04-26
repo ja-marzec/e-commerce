@@ -8,9 +8,9 @@ export default function CartItem(props) {
           <div className="cart-item__details">
             <h4 className="cart-item__details-name">{item.name}</h4>
             <div className="cart-item__details-qty">
-              <button type="button" title="Reduce quantity">-</button>
-              <p>qua {item.quantity}</p>
-              <button type="button" title="Increase quantity">+</button>
+              {/* <button type="button" title="Reduce quantity">-</button>
+              <p>qua: {item.quantity}</p>
+              <button type="button" title="Increase quantity">+</button> */}
             </div>
             <div className="cart-item__details-price">{item.line_total.formatted_with_symbol}</div>
           </div>
