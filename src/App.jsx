@@ -1,19 +1,31 @@
 import React, { useEffect, useState } from 'react';
-import logo from './logo.svg';
 import './App.scss';
 import { commerce } from './lib/commerce';
-import { useStore } from 'react-redux';
 import { useSelector, useDispatch } from 'react-redux';
 import {loadCartItems, loadShopItems} from './app/slice';
+
 import ProductsList from './components/ProductsList';
 import Header from './components/Header';
 import Cart from './components/Cart';
+import Contact from './components/Contact';
+import ItemPreview from './components/ItemPreview';
+import AboutUs from './components/AboutUs';
+
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
 
 function App() {
   const shop = useSelector(state => state.shop.shopItems)
+  const preview = useSelector(state => state.shop.itemPreview)
+
   const dispatch = useDispatch()
   const [app, setApp] = useState({});
 
+  console.log(preview);
   function fetchProducts() {
     commerce.products.list().then((products) => {
       // setApp({ products: products.data });
@@ -25,7 +37,7 @@ function App() {
 
   function fetchCart() {
     commerce.cart.retrieve().then((cart) => {
-     dispatch(loadCartItems({cart}))
+     dispatch(loadCartItems(cart))
     }).catch((error) => {
       console.error('There was an error fetching the cart', error);
     });
@@ -38,12 +50,36 @@ function App() {
 
   return (
     <div className="App">
+      <Router >
       <Header />
-      <div className="page__body">
-      <ProductsList />
-      </div>
+      <Switch>
 
-     <Cart />
+          <Route exact path="/">
+            <ProductsList />
+          </Route>
+
+          <Route path="/cart">
+            <Cart />
+          </Route>
+
+          <Route path="/itempreivew">
+            <ItemPreview />
+          </Route>
+
+          <Route  path="/contact">
+            <Contact />
+          </Route>
+
+          <Route  path="/aboutus">
+            <AboutUs />
+          </Route>
+
+          <Route  path="/itempreview">
+            <ItemPreview />
+          </Route>
+
+        </Switch>
+      </Router>
     </div>
   );
 }

@@ -1,43 +1,54 @@
 import React, { useEffect, useState } from "react";
 import stripHtml from 'string-strip-html';
 import { useSelector, useDispatch } from 'react-redux';
-import { loadCartItems} from '../app/slice';
+import { loadCartItems, openPreview} from '../app/slice';
 import { commerce } from '../lib/commerce';
+
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
 
 export default function ProductItem(props) {
     const { product } = props;
-    console.log("PROPS",product);
     const dispatch = useDispatch()
     const shop = useSelector(state => state.shop.cartItems);
     const [isItemInCart, setIsItemInCart] = useState(false)
-    
 
-    useEffect(() => {
-      if( isItemIncluded() ) {
-        setIsItemInCart(true) 
-      }
-    },[])
-
-    const isItemIncluded = () => {
-      if (shop.cart?.line_items.some(item => ( item.product_id === product.id ))) {
+    function isItemIncluded () {
+      if (shop.line_items?.some(item => ( item.product_id === product.id ))) {
         return false;
       } else {
        return true;
       }
     }
 
+    useEffect(() => {
+          if(!isItemIncluded()) {
+            setIsItemInCart(true)
+          } else {
+            setIsItemInCart(false)
+          }
+    },[shop.line_items])
+
 
   function handleAddToCart(productId, quantity) {
     if(isItemIncluded()) {
       commerce.cart.add(productId, quantity).then((item) => {
         setIsItemInCart(true);
-        dispatch(loadCartItems({cart: item.cart}))
+        dispatch(loadCartItems( item.cart ))
       }).catch((error) => {
         console.error('There was an error adding the item to the cart', error);
       });
     } else {
       return 
     }
+    }
+    function handleOpenPreview() {
+      
+      dispatch(openPreview({open: true, product: product }))
     }
 
 
@@ -56,7 +67,12 @@ export default function ProductItem(props) {
             {product.price.formatted_with_symbol}
             </p>
           </div>
-          {isItemInCart ?
+          <button
+          onClick={(e) => handleOpenPreview(e)}
+         >
+          <Link to="/itempreview"> OPEN PREVIEW </Link> 
+         </button>
+          {!isItemInCart ?
          <button
          onClick={() => handleAddToCart(product.id, 1)}
          >

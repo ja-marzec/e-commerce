@@ -1,10 +1,10 @@
 import { useSelector, useDispatch } from 'react-redux';
 import CartItem from './CartItem';
 import { commerce } from '../lib/commerce';
-
+import { loadCartItems} from '../app/slice';
 export default function Cart () {
     const shop = useSelector(state => state.shop.cartItems)
-
+    const dispatch = useDispatch()
 
     console.log("CART ",shop);
 
@@ -19,7 +19,7 @@ export default function Cart () {
     }
 
     function renderCartItems() {
-      return  shop.cart?.line_items.map(item => {
+      return  shop.line_items?.map(item => {
             return (
                 <div>
                 <CartItem
@@ -34,7 +34,10 @@ export default function Cart () {
     }
 
     function cleanCart() {
-        commerce.cart.empty().then((response) => console.log(response))
+        commerce.cart.empty().then((response) => {
+            dispatch(loadCartItems(response.cart) )
+            console.log(response)
+        })
     }
 
 
