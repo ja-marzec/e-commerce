@@ -17,6 +17,7 @@ import {
   Route,
   Link
 } from "react-router-dom";
+import Home from './components/Home';
 
 function App() {
   const shop = useSelector(state => state.shop.shopItems)
@@ -55,7 +56,7 @@ function App() {
       <Switch>
 
           <Route exact path="/">
-            <ProductsList />
+           <Home />
           </Route>
 
           <Route path="/cart">

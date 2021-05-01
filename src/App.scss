@@ -4,7 +4,11 @@
 @import "./styles/productItem";
 @import "./styles/header";
 @import './styles/cartItem.scss';
+@import './styles/home.scss';
 
+body{
+  overflow-x: hidden;
+}
 .App {
   text-align: center;
 }
