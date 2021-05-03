@@ -54,8 +54,12 @@ export default function ProductItem(props) {
 
     return (
       <div className="product__card"
+      onClick={(e) => handleOpenPreview(e)}
       >
+          <Link to="/itempreview">  
         <img className="product__image" src={product.media.source} alt={product.name} />
+        </Link>
+
         <div className="product__info">
           <h4 className="product__name">{product.name}</h4>
           {/* <p className="product__description">
@@ -66,11 +70,7 @@ export default function ProductItem(props) {
             {product.price.formatted_with_symbol}
             </p>
           </div>
-          <button
-          onClick={(e) => handleOpenPreview(e)}
-         >
-          <Link to="/itempreview"> OPEN PREVIEW </Link> 
-         </button>
+
           {!isItemInCart ?
          <button
          onClick={() => handleAddToCart(product.id, 1)}

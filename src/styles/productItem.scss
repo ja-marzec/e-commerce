@@ -2,13 +2,16 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    width: 15vw;
+    width: 40%;
+    margin-top: 30px;
 
     @include for-phone-only {
         max-width: 90vw;
     }
 }
 .product__image{
+    margin: 0 auto;
+    width: 70%;
     
 }
 .product__info{

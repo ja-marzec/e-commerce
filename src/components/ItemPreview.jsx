@@ -21,7 +21,7 @@ export default function ItemPreview() {
 
     return (
     <div>
-         <div className="product__card"
+         <div className="preview__item"
       >
         <img className="product__image" src={product.media?.source} alt={product.name} />
         <div className="product__info">
@@ -31,7 +31,7 @@ export default function ItemPreview() {
             {product.description}
           </p>
             <p className="product__price">
-            {product.price?.formatted_with_symbol}
+         CENA:    {product.price?.formatted_with_symbol}
             </p>
           </div>
         </div>

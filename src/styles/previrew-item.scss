@@ -1,0 +1,27 @@
+.preview__item{
+    margin-top: 30px;
+    display: grid;
+        grid-template-columns: 50% 50%;
+    grid-template-areas: 
+    "image desc";
+   
+    .product__image{
+        grid-area: image;
+    }
+    .product__info{
+        text-align: left;
+    }
+    .product__name{
+        font-size: 30px;
+        margin-top: 30px
+    }
+    .product__details{
+        margin-top: 30px
+    }
+    .product__description{
+        margin-top: 30px
+    }
+    .product__price{
+        margin-top: 30px
+}
+}
