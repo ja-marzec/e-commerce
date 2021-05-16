@@ -2,6 +2,13 @@ import { useSelector, useDispatch } from 'react-redux';
 import CartItem from './CartItem';
 import { commerce } from '../lib/commerce';
 import { loadCartItems} from '../app/slice';
+import {
+    BrowserRouter as Router,
+    Switch,
+    Route,
+    Link
+  } from "react-router-dom";
+  
 export default function Cart () {
     const shop = useSelector(state => state.shop.cartItems)
     const dispatch = useDispatch()
@@ -48,6 +55,9 @@ export default function Cart () {
                     {renderCartItems()} 
                     </div>: renderEmptyCart()} 
                     <button onClick={() => cleanCart()}>CLEAN CART </button>
+                    <Link to="/order">  
+                    <div> ZAMÓW </div>
+                    </Link>
         </div>
 
     )

@@ -11,6 +11,7 @@ import Contact from './components/Contact';
 import ItemPreview from './components/ItemPreview';
 import AboutUs from './components/AboutUs';
 
+
 import {
   BrowserRouter as Router,
   Switch,
@@ -18,6 +19,7 @@ import {
   Link
 } from "react-router-dom";
 import Home from './components/Home';
+import Order from './components/Order';
 
 function App() {
   const shop = useSelector(state => state.shop.shopItems)
@@ -26,7 +28,6 @@ function App() {
   const dispatch = useDispatch()
   const [app, setApp] = useState({});
 
-  console.log(preview);
   function fetchProducts() {
     commerce.products.list().then((products) => {
       // setApp({ products: products.data });
@@ -77,6 +78,9 @@ function App() {
 
           <Route  path="/itempreview">
             <ItemPreview />
+          </Route>
+          <Route  path="/order">
+            <Order />
           </Route>
 
         </Switch>

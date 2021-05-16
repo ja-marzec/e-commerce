@@ -47,7 +47,6 @@ export default function ProductItem(props) {
     }
     }
     function handleOpenPreview() {
-      
       dispatch(openPreview({open: true, product: product }))
     }
 

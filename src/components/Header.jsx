@@ -11,7 +11,6 @@ export default function Header() {
 
     const shop = useSelector(state => state.shop.cartItems)
     
-    console.log("SHOP",shop);
     
     return (
             
