@@ -3,6 +3,7 @@ import stripHtml from 'string-strip-html';
 import { useSelector, useDispatch } from 'react-redux';
 import { loadCartItems, openPreview} from '../app/slice';
 import { commerce } from '../lib/commerce';
+import Grid from '@material-ui/core/Grid';
 
 import {
   BrowserRouter as Router,
@@ -16,7 +17,6 @@ export default function ProductItem(props) {
     const dispatch = useDispatch()
     const shop = useSelector(state => state.shop.cartItems);
     const [isItemInCart, setIsItemInCart] = useState(false)
-
     function isItemIncluded () {
       if (shop.line_items?.some(item => ( item.product_id === product.id ))) {
         return false;
@@ -52,6 +52,7 @@ export default function ProductItem(props) {
 
 
     return (
+      <Grid item xs={12} md={4} xl={3} >
       <div className="product__card"
       onClick={(e) => handleOpenPreview(e)}
       >
@@ -81,6 +82,7 @@ export default function ProductItem(props) {
         }
         </div>
       </div>
+      </Grid>
     );
   }
 

@@ -20,9 +20,9 @@ export const counterSlice = createSlice({
         shippingName: 'Jane Doe',
         shippingStreet: '123 Fake St',
         shippingCity: 'San Francisco',
-        shippingStateProvince: 'CA',
+        // shippingStateProvince: 'CA',
         shippingPostalZipCode: '94107',
-        shippingCountry: 'US',
+        shippingCountry: 'PL',
         // Payment details
         cardNum: '4242 4242 4242 4242',
         expMonth: '11',
@@ -30,10 +30,13 @@ export const counterSlice = createSlice({
         ccv: '123',
         billingPostalZipcode: '94107',
         // Shipping and fulfillment data
-        shippingCountries: {},
+        // shippingCountries: {},
+        
         shippingSubdivisions: {},
+        shippingSubdivision: 18,
         shippingOptions: [],
         shippingOption: '',
+        order: {}
       },
     },
     reducers: {
