@@ -7,7 +7,6 @@
 @import './styles/home.scss';
 @import "./styles/previrew-item.scss";
 
-
 *{
   box-sizing: border-box;
 }
@@ -20,7 +19,6 @@ body{
 .App {
   text-align: center;
 }
-
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -30,6 +28,10 @@ body{
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
   }
+}
+.reset__link{
+  color: black;
+  text-decoration: none;
 }
 
 .App-header {
@@ -41,6 +43,7 @@ body{
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+  
 }
 
 .App-link {

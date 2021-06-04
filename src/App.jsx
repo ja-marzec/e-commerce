@@ -11,6 +11,7 @@ import Contact from './components/Contact';
 import ItemPreview from './components/ItemPreview';
 import AboutUs from './components/AboutUs';
 
+import { Grid, Box  } from "@material-ui/core";
 
 import {
   BrowserRouter as Router,
@@ -51,7 +52,7 @@ function App() {
   },[])
 
   return (
-    <div className="App">
+    <Box  className="App">
       <Router >
       <Header />
       <Switch>
@@ -85,7 +86,7 @@ function App() {
 
         </Switch>
       </Router>
-    </div>
+    </Box>
   );
 }
 
