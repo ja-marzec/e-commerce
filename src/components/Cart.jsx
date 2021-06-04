@@ -16,10 +16,8 @@ export default function Cart() {
   }
 
   function renderCartItems() {
-    return shop.line_items?.map((item) => {
-      return (
-          <CartItem item={item} key={item.id} className="cart__inner" />
-      );
+    return shop?.line_items.map((item) => {
+      return <CartItem item={item} key={item.id} className="cart__inner" />;
     });
   }
 
@@ -31,22 +29,30 @@ export default function Cart() {
   }
 
   return (
-      <Box>
-      {shop.cart?.line_items.length !== 0 ? (
-        <Grid container justify="center" spacing={3}>{renderCartItems()}</Grid>
+    <Box>
+      {shop.line_items !== undefined ? (
+        <>
+          <Grid container justify="center" spacing={3}>
+            {renderCartItems()}
+          </Grid>
+          <Box mt={3}>
+            <Grid justify="center">
+              <Link to="/order">
+                <Button ml={3} variant="contained" color="primary">
+                  {" "}
+                  ZAMÓW!{" "}
+                </Button>
+              </Link>
+            </Grid>
+          </Box>
+        </>
       ) : (
-        renderEmptyCart()
+        <Box>
+          <Typography mt={6} variant="h6">
+            Koszyk jest pusty
+          </Typography>
+        </Box>
       )}
-      <Box mt={3} >
-          <Grid justify="center">
-
-      {/* <Button variant="contained" onClick={() => cleanCart()}>WYCZYŚĆ KOSZYK </Button> */}
-      <Link to="/order" >
-          <Button ml={3} variant="contained" color="primary" > ZAMÓW! </Button>
-      </Link>
-      </Grid>
-      </Box>
-
-      </Box>
+    </Box>
   );
 }

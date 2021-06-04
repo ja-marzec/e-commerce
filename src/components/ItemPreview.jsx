@@ -10,11 +10,10 @@ export default function ItemPreview() {
 
   const product = useSelector((state) => state.shop.itemPreview.product);
   const shop = useSelector((state) => state.shop.cartItems);
-
   const [isItemInCart, setIsItemInCart] = useState(false);
 
   function isItemIncluded() {
-    if (shop.line_items?.some((item) => item.product_id === product.id)) {
+    if (shop.line_items?.some((item) => item.product_id === product?.id)) {
       return false;
     } else {
       return true;
@@ -22,8 +21,13 @@ export default function ItemPreview() {
   }
 
   useEffect(() => {
+  localStorage.setItem('product', JSON.stringify(product) );
+  },[])
+
+  useEffect(() => {
     if (!isItemIncluded()) {
       setIsItemInCart(true);
+    
     } else {
       setIsItemInCart(false);
     }
@@ -50,6 +54,7 @@ export default function ItemPreview() {
 
   function closeItemPreview() {
     dispatch(openPreview({ open: false, product: {} }));
+    localStorage.removeItem('product');
   }
 
   return (
@@ -59,23 +64,23 @@ export default function ItemPreview() {
           <Grid item xs={12} md={6}>
             <img
               className="product__image"
-              src={product.media?.source}
-              alt={product.name}
+              src={product.media ? product.media.source : JSON.parse(window.localStorage.getItem('product')).media.source  }
+              alt={product?.name}
             />
           </Grid>
           <Grid item xs={12} md={6} >
             <Box mt={window.innerWidth < 800 ? 2 : 5 } mr={window.innerWidth < 800 ? 0 : 20 }>
             <Typography variant="h6" style={{ textAlign: window.innerWidth < 800 ? "center" : "left" }}>
-              {product.name}
+              {product?.name}
             </Typography>
             <Box mt={1}>
               <Typography variant="body1" style={{ textAlign: window.innerWidth < 800 ? "center" : "left" }}>
-                {product?.description.replace("<p>", "").replace("</p>", "")}
+                {product.description ? product.description.replace("<p>", "").replace("</p>", "") : ""}
               </Typography>
             </Box>
             <Box mt={3}>
               <Typography variant="body2" style={{ textAlign: window.innerWidth < 800 ? "center" : "left" }}>
-                CENA: {product.price?.raw} zł
+                CENA: {product.price ? product.price.raw : ""} zł
               </Typography>
             </Box>
          
@@ -87,7 +92,7 @@ export default function ItemPreview() {
       <Box mt={3}>
         {!isItemInCart ? (
           <Button
-          variant="contained" color="primary" onClick={() => handleAddToCart(product.id, 1)}>
+          variant="contained" color="primary" onClick={() => handleAddToCart(product?.id, 1)}>
            DODAJ DO KOSZYKA
           </Button>
         ) : (
@@ -98,10 +103,11 @@ export default function ItemPreview() {
       </Box>
 
       <Box mt={2}>
-        <Button   variant="contained"  disable onClick={() => closeItemPreview()}>
-          {" "}
-          <Link to="/" className="reset__link" > CLOSE </Link>{" "}
-        </Button>
+      <Link to="/" className="reset__link" > 
+      <Button   variant="contained"  disable onClick={() => closeItemPreview()}>
+      CLOSE 
+      </Button>
+      </Link>
       </Box>
     </Box>
   );

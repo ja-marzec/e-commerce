@@ -34,7 +34,7 @@ export default function CartItem(props) {
         </Typography>
       </Box>
       <Button variant="contained" onClick={() => removeItem()}>
-        Usuń z koszyczka
+        Usuń z koszyka
       </Button>
     </Grid>
   );
