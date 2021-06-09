@@ -9,6 +9,8 @@ import Link from "@material-ui/core/Link";
 import InfoSection from './InfoSection'
 import OurBest from "./OurBest";
 import InfoSectionRiverse from "./InfoSectionRiverse";
+import WeirdGridStuff from "./WeirdGridStuff";
+import ContactSection from "./ContactSection";
 
 export default function Home() {
   return (
@@ -75,13 +77,18 @@ export default function Home() {
         </Grid>
         <InfoSection />
     <OurBest /> 
+    <WeirdGridStuff />
+
         <ProductsList />
         <InfoSectionRiverse />
 
+<ContactSection />
       </Box>
     </Container>
-    {/* </Box> */}
 
+    {/* </Box> */}
+<Box  mb={20}>
+  </Box>
     </Container>
 
   );

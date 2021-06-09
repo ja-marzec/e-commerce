@@ -19,7 +19,7 @@ export default function OurBest() {
         <Grid container align="center"   justify="space-between" spacing={3} >
          <OurBestItem img={"https://picsum.photos/id/11/500/500"} />
          <OurBestItem img={"https://picsum.photos/id/12/250/250"} />
-         <OurBestItem img={"https://picsum.photos/id/13/500/450"} />
+         <OurBestItem img={"https://picsum.photos/id/13/500/500"} />
         </Grid>
       </Box>
     </Box>
