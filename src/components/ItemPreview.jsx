@@ -4,9 +4,22 @@ import { useState, useEffect } from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { commerce } from "../lib/commerce";
 import { Grid, Box, Button, Typography, Container } from "@material-ui/core";
+import Alert from '@material-ui/lab/Alert';
+import Snackbar from '@material-ui/core/Snackbar';
+import IconButton from '@material-ui/core/IconButton';
+import CloseIcon from '@material-ui/icons/Close';
 
 export default function ItemPreview() {
   const dispatch = useDispatch();
+
+  const [open, setOpen] = useState(false);
+
+  const handleClick = () => {
+    setOpen(true);
+  };
+  const handleClose = () => {
+    setOpen(false)
+  }
 
   const product = useSelector((state) => state.shop.itemPreview.product);
   const shop = useSelector((state) => state.shop.cartItems);
@@ -39,6 +52,7 @@ export default function ItemPreview() {
         .add(productId, quantity)
         .then((item) => {
           setIsItemInCart(true);
+          handleClick();
           dispatch(loadCartItems(item.cart));
         })
         .catch((error) => {
@@ -105,10 +119,32 @@ export default function ItemPreview() {
       <Box mt={2}>
       <Link to="/" className="reset__link" > 
       <Button   variant="contained"  disable onClick={() => closeItemPreview()}>
-      CLOSE 
+          CLOSE 
       </Button>
       </Link>
       </Box>
+
+      <Snackbar
+      autoHideDuration={600}
+        anchorOrigin={{
+          vertical: 'bottom',
+          horizontal: 'left',
+        }}
+        open={open}
+        onClose={handleClose}
+        message="DODANE DO KOSZYKA"
+        action={
+          <>
+            <Button color="primary" size="small" >
+              Przejdź do koszyka
+            </Button>
+            <IconButton size="small" aria-label="close" color="inherit" >
+              <CloseIcon fontSize="small" onClick={() => handleClose}/>
+            </IconButton>
+          </>
+        }
+      />
+
     </Box>
   );
 }

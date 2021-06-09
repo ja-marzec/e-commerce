@@ -198,7 +198,6 @@ export default function Payment() {
   return (
     <Box mt={2}>
       <Box  mb={5}>
-
         <Typography mt={6} variant="h6">
           ZAPŁAĆ
         </Typography>

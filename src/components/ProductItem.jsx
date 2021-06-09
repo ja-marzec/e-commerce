@@ -52,32 +52,38 @@ export default function ProductItem(props) {
   }
 
   return (
-    <Grid item xs={12} md={6} >
-      <div className="product__card" onClick={(e) => handleOpenPreview(e)}>
+    <Grid item xs={12} md={4}>
+      <Box onClick={(e) => handleOpenPreview(e)}>
         <Link to="/itempreview">
           <img
-            className="product__image"
             src={product.media.source}
             alt={product.name}
+            style={{
+              height: "100%",
+              width: "100%",
+              border: "1px solid black",
+            }}
           />
         </Link>
 
-        <div className="product__info">
-          <Typography mt={6} variant="h6">
+<Box mt={1}>
+
+        <Grid container justify="space-beetwen">
+          <Grid item xs={6} >
+          <Typography mt={6} variant="h6" align="left">
             {product.name}
           </Typography>
+          </Grid>
+          <Grid item xs={6}>
+          <Typography mt={6} variant="body1"  align="right">
+              {product.price.raw} zł{" "}
+            </Typography>
+          </Grid>
+       
           {/* <p className="product__description">
             {product.description}
           </p> */}
-          <div className="product__details">
-            <p className="product__price">
-              <Typography mt={6} variant="body2">
-                {product.price.raw} zł{" "}
-              </Typography>
-            </p>
-          </div>
-
-          <Box mt={1}>
+          {/* <Box mt={1}>
             {!isItemInCart ? (
               <Button
                 variant="contained"
@@ -90,9 +96,11 @@ export default function ProductItem(props) {
                 W KOSZYCZKU
               </Button>
             )}
-          </Box>
-        </div>
-      </div>
+          </Box> */}
+        </Grid>
+</Box>
+
+      </Box>
     </Grid>
   );
 }

@@ -7,8 +7,10 @@ export default function ProductsList() {
     const shop = useSelector(state => state.shop.shopItems.products)
 
     return (
-      <div className="products__list">
-        <Grid container spacing={-2} justify="center" alignItems="center">
+      <Box mt={10} >
+        <Typography variant="h4"> NASZE PRODUKCJE </Typography>
+        <Box mt={4}>
+        <Grid container justify="space-between" spacing={10} >
        {shop?.map((product) => (
           <ProductItem
             key={product.id}
@@ -16,7 +18,7 @@ export default function ProductsList() {
           />
         ))  }
         </Grid>
-
-      </div>
+        </Box>
+      </Box>
     );
   }
