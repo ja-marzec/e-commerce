@@ -17,7 +17,7 @@ export default function Home() {
     <Container
     style={{
       backgroundColor: `white`,
-      // border: "10px solid black"
+      paddingTop: "50px",
     }}
     >
       {/* <Box ml={5} mr={5} mt={10}> */}

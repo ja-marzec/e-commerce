@@ -32,7 +32,7 @@ export default function InfoSection() {
               mt={7}
             >
               <Grid container spacing={3} direction="row">
-                <Grid item xs={4}>
+                <Grid item xs={3}>
                 </Grid>
                 <Grid
                 item sx={1}

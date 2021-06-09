@@ -28,7 +28,7 @@ export default function WeirdGridStuff() {
           />
         </Grid>
 
-        <Grid item md="5">
+        <Grid item md="5" >
           <img
             src="https://picsum.photos/id/117/500/500"
             style={{
@@ -42,7 +42,10 @@ export default function WeirdGridStuff() {
 
 
       <Grid container justify="center">
-        <Grid item md="3">
+        <Grid item md="3"
+        style={{
+            height: "300px"
+        }}>
           <img
             src="https://picsum.photos/id/121/500/500"
             style={{
@@ -53,7 +56,10 @@ export default function WeirdGridStuff() {
           />
         </Grid>
 
-        <Grid item md="3">
+        <Grid item md="3"
+        style={{
+            height: "300px"
+        }}>
           <img
             src="https://picsum.photos/id/113/500/500"
             style={{
@@ -64,7 +70,11 @@ export default function WeirdGridStuff() {
           />
         </Grid>
 
-        <Grid item md="6">
+        <Grid item md="6"
+        style={{
+            height: "300px"
+        }}
+        >
           <img
             src="https://picsum.photos/id/115/500/500"
             style={{

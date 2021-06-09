@@ -11,7 +11,7 @@ import Contact from './components/Contact';
 import ItemPreview from './components/ItemPreview';
 import AboutUs from './components/AboutUs';
 
-import { Grid, Box  } from "@material-ui/core";
+import { Grid, Box, Container  } from "@material-ui/core";
 
 import {
   BrowserRouter as Router,
@@ -52,7 +52,12 @@ function App() {
   },[])
 
   return (
-    <Box  className="App">
+    <div style={{
+      backgroundColor: "red"
+    }}>
+    <Container  className="App" style={{
+      border: "10px solid black"
+    }}>
       <Router >
       <Header />
       <Switch>
@@ -86,7 +91,9 @@ function App() {
 
         </Switch>
       </Router>
-    </Box>
+    </Container>
+    </div>
+
   );
 }
 
